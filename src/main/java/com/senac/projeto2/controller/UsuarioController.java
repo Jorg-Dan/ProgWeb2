@@ -6,11 +6,12 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("api/usuario")
-@Tag(name="Usuario", description="api para gerenciamento dos usuários do sistema")
+@Tag(name="Usuario", description="API para gerenciamento dos usuarios do sistema")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -25,25 +26,30 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.listarUsuarios());
     }
 
-    @GetMapping("/listarPoridUsuario/{idUsuario}")
-    @Operation (summary = "Listar usuarios do sistema pelo id do usuário")
+    @GetMapping("/listarPorIdUsuario/{idUsuario}")
+    @Operation(summary = "Listar usuarios do sistema pelo id do usuário")
     public ResponseEntity<Usuario> listarPorIdUsuario(@PathVariable("idUsuario") Integer idUsuario){
-        return ResponseEntity.ok(usuarioService.listarUsuarioPorId(idUsuario));
+        Usuario usuario = usuarioService.listarUsuarioPorId(idUsuario);
+        if (usuario == null) {
+            return ResponseEntity.noContent().build();
+        }else{
+            return ResponseEntity.ok(usuario);
+        }
+
     }
 
     @PostMapping("/criar")
     public String criar(){
-        return "Usuário criado com sucesso!";
+        return "Usuario Criado com sucesso!";
     }
 
     @PutMapping("/atualizar")
     public String atualizar(){
-        return "Usuário atualizado com sucesso";
+        return  "Usuario atualizado com sucesso!";
     }
 
     @DeleteMapping("/apagar")
     public String apagar(){
-        return "Usuário apagado com sucesso";
+        return "Usuario apagado com sucesso!";
     }
-
 }

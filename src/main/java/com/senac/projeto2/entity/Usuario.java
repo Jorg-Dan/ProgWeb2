@@ -1,7 +1,6 @@
 package com.senac.projeto2.entity;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity

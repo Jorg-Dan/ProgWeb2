@@ -1,4 +1,9 @@
 package com.senac.projeto2.repository;
 
-public interface ParticipanteRepository {
+import com.senac.projeto2.entity.Participante;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ParticipanteRepository extends JpaRepository<Participante, Integer> {
 }

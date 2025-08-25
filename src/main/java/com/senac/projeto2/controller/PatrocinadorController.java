@@ -12,7 +12,6 @@ import java.util.List;
 @RequestMapping("api/patrocinador")
 @Tag(name = "Patrocinador", description = "API para gerenciamento de patrocinadores do sistema")
 public class PatrocinadorController {
-
     private final PatrocinadorService patrocinadorService;
 
     public PatrocinadorController(PatrocinadorService patrocinadorService) {
@@ -25,31 +24,14 @@ public class PatrocinadorController {
         return ResponseEntity.ok(patrocinadorService.listarPatrocinadores());
     }
 
-    @GetMapping("/listarPorIdPatrocinador/{idPatrocinador}")
-    @Operation(summary = "Listar patrocinadores do sistema pelo id")
-    public ResponseEntity<Patrocinador> listarPorIdPatrocinador(@PathVariable("idPatrocinador") Integer idPatrocinador){
+    @GetMapping("/listarPorIdUsuario/{idUsuario}")
+    @Operation(summary = "Listar usuarios do sistema pelo id do usuário")
+    public ResponseEntity<Patrocinador> listarPorIdUsuario(@PathVariable("idPatrocinador") Integer idPatrocinador){
         Patrocinador patrocinador = patrocinadorService.listarPatrocinadorPorId(idPatrocinador);
-        if (patrocinador == null){
+        if (patrocinador == null) {
             return ResponseEntity.noContent().build();
         }else{
             return ResponseEntity.ok(patrocinador);
         }
     }
-
-    @PostMapping("/criar")
-    public String criar(){
-        return "Patrocinador Criado com sucesso!";
-    }
-
-    @PutMapping("/atualizar")
-    public String atualizar(){
-        return  "Patrocinador atualizado com sucesso!";
-    }
-
-    @DeleteMapping("/apagar")
-    public String apagar(){
-        return "Patrocinador apagado com sucesso!";
-    }
-
-
 }

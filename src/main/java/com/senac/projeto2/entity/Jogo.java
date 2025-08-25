@@ -1,23 +1,24 @@
 package com.senac.projeto2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
-@Table(name="categoria")
-public class Categoria {
+@Table(name="jogo")
+public class Jogo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="categoria_id")
+    @Column(name="jogo_id")
     private int id;
-    @Column(name="categoria_nome")
+    @Column(name="jogo_nome")
     private String nome;
-    @Column(name="categoria_status")
+    @Column(name="jogo_status")
     private int status;
 
-    @OneToMany(mappedBy = "categoria")
-    private List<Jogo> jogos;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id",nullable = false)
+    @JsonIgnore
+    private Categoria categoria;
 
     public int getId() {
         return id;
@@ -43,11 +44,7 @@ public class Categoria {
         this.status = status;
     }
 
-    public List<Jogo> getJogos() {
-        return jogos;
-    }
-
-    public void setJogos(List<Jogo> jogos) {
-        this.jogos = jogos;
+    public Categoria getCategoria() {
+        return categoria;
     }
 }

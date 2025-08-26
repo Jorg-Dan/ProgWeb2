@@ -3,6 +3,7 @@ package com.senac.projeto2.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="participante")
@@ -22,7 +23,8 @@ public class Participante {
     @Column(name = "participante_status", nullable = false)
     private int status;
 
-
+    @OneToMany(mappedBy = "participante")
+    private List<Insricao> inscricoes;
 
     public int getId() {
         return id;

@@ -20,6 +20,8 @@ public class Jogo {
     @JsonIgnore
     private Categoria categoria;
 
+
+
     public int getId() {
         return id;
     }

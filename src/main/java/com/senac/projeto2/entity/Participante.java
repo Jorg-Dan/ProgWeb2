@@ -24,7 +24,7 @@ public class Participante {
     private int status;
 
     @OneToMany(mappedBy = "participante")
-    private List<Insricao> inscricoes;
+    private List<Inscricao> inscricoes;
 
     public int getId() {
         return id;

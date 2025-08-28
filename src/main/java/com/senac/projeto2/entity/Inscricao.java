@@ -1,13 +1,12 @@
 package com.senac.projeto2.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 
 @Entity
 @Table(name="inscricao")
-public class Insricao {
+public class Inscricao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="inscricao_id")

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/jogos")
+@RequestMapping("api/jogo")
 @Tag(name="Jogo", description="API para gerenciamento dos jogos do sistema")
 public class JogoController {
     private final JogoService jogoService;
@@ -23,13 +23,13 @@ public class JogoController {
     }
 
     @GetMapping("/listar")
-    @Operation(summary = "Listar jogos do sistema")
+    @Operation(summary = "Listar jogod do sistema")
     public ResponseEntity<List<Jogo>> listar(){
-        return ResponseEntity.ok(jogoService.listarJogo());
+        return ResponseEntity.ok(jogoService.listarJogos());
     }
 
     @GetMapping("/listarPorIdJogo/{idJogo}")
-    @Operation(summary = "Listar jogos do sistema pelo id do jogo")
+    @Operation(summary = "Listar categorias do sistema pelo id do jogo")
     public ResponseEntity<Jogo> listarPorIdJogo(@PathVariable("idJogo") Integer idJogo){
         Jogo jogo = jogoService.listarJogoPorId(idJogo);
         if (jogo == null) {

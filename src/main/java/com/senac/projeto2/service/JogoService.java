@@ -15,7 +15,7 @@ public class JogoService {
         this.jogoRepository = jogoRepository;
     }
 
-    public List<Jogo> listarJogo(){
+    public List<Jogo> listarJogos(){
         return this.jogoRepository.findAll();
     }
 

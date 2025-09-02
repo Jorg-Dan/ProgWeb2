@@ -30,12 +30,13 @@ public class ParticipanteController {
 
     @GetMapping("/listarPorIdParticipante/{idParticipante}")
     @Operation(summary = "Listar usuarios do sistema pelo id do usuário")
-    public ResponseEntity<Participante> listarPorIdUsuario(@PathVariable("idParticipante") Integer idParticipante) {
+    public ResponseEntity<Participante> listarPorIdUsuario(@PathVariable("idParticipante") Integer idParticipante){
         Participante participante = participanteService.listarParticipantePorId(idParticipante);
         if (participante == null) {
             return ResponseEntity.noContent().build();
-        } else {
+        }else{
             return ResponseEntity.ok(participante);
         }
     }
+
 }
